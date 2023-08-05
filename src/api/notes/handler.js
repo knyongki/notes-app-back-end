@@ -16,7 +16,7 @@ class NotesHandler {
       const noteId = this._service.addNote({ title, body, tags });
 
       const response = h.response({
-        status: 'Success',
+        status: 'success',
         message: 'Catatan berhasil ditambahkan',
         data: {
           noteId,
