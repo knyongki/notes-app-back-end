@@ -26,9 +26,11 @@ class NoteServices {
     if (!isSuccess) {
       throw new Error('Catatan gagal di tambahkan');
     }
+
+    return id;
   }
 
-  getNote() {
+  getNotes() {
     return this._notes;
   }
 

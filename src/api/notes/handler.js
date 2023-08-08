@@ -47,7 +47,7 @@ class NotesHandler {
   getNoteByIdHandler(request, h) {
     try {
       const { id } = request.params;
-      const note = this._service.getNotesById(id);
+      const note = this._service.getNoteById(id);
       return {
         status: 'success',
         data: {
