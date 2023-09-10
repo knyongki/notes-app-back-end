@@ -22,10 +22,23 @@ class UsersServices {
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw new InvariantError('User gagal ditambahkan');
+      throw new InvariantError('user gagal ditambahkan');
     }
 
     return result.rows[0].id;
+  }
+
+  async verifyNewUsername(username) {
+    const query = {
+      text: 'SELECT username FROM users WHERE username = $1',
+      values: [username],
+    };
+
+    const result = await this._pool.query(query);
+
+    if (result.rows.length > 0) {
+      throw new InvariantError('Gagal menambahkan user. Username sudah digunakan.');
+    }
   }
 
   async getUserById(userId) {
@@ -41,19 +54,6 @@ class UsersServices {
     }
 
     return result.rows[0];
-  }
-
-  async verifyNewUsername(username) {
-    const query = {
-      text: 'SELECT username FROM users WHERE username = $1',
-      value: [username],
-    };
-
-    const result = await this._pool.query(query);
-
-    if (result.rows.length > 0) {
-      throw new InvariantError('Gagal menambahkan user. Username sudah digunakan');
-    }
   }
 }
 
