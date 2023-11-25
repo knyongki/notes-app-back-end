@@ -32,7 +32,7 @@ class NotesServices {
 
   async getNotes(owner) {
     const query = {
-      text: 'SELECT * FROM notes WHERE notes = $1',
+      text: 'SELECT * FROM notes WHERE owner = $1',
       values: [owner],
     };
 

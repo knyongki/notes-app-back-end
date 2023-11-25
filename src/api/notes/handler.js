@@ -103,7 +103,7 @@ class NotesHandler {
       const { id } = request.params;
       const { id: credentialId } = request.auth.credentials;
 
-      await this.service.verifyNoteOwner(id, credentialId);
+      await this._service.verifyNoteOwner(id, credentialId);
       await this._service.editNoteById(id, request.payload);
 
       return {
@@ -136,7 +136,7 @@ class NotesHandler {
       const { id } = request.params;
       const { id: credentialId } = request.auth.credentials;
 
-      await this.service.verifyNoteOwner(id, credentialId);
+      await this._service.verifyNoteOwner(id, credentialId);
       await this._service.deleteNoteById(id);
 
       return {
